@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "styles/app";
+
+html, body {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}

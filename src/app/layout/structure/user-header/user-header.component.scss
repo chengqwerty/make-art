@@ -1,0 +1,20 @@
+mat-toolbar {
+  min-height: 64px;
+}
+.make-header-item {
+  margin-left: 8px;
+  padding: 4px 0 4px 4px;
+  font-size: 14px;
+  .make-header-title {
+    line-height: 24px;
+  }
+  .make-header-svg-container {
+    display: flex;
+    width: 32px;
+    height: 32px;
+  }
+}
+.make-header-item:hover {
+  background-color: rgba(255, 241, 250, 0.24);
+  cursor: pointer;
+}
