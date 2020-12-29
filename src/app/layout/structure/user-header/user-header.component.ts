@@ -10,6 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class UserHeaderComponent implements OnInit {
 
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    // tslint:disable-next-line:max-line-length
     this.matIconRegistry.addSvgIcon('account-svg', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/make-svg/fill/account-book.svg'));
   }
 

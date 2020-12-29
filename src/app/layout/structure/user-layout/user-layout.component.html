@@ -1,6 +1,14 @@
 <div class="make-art-container">
   <app-user-header></app-user-header>
   <div class="make-art-body">
-
+    <mat-sidenav-container class="make-body-container">
+      <mat-sidenav opened="" mode="side" position="start">
+        <app-user-sidebar></app-user-sidebar>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        This is sidenav content;
+        <!--<app-user-sidebar></app-user-sidebar>-->
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
 </div>
