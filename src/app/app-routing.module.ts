@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserLayoutComponent } from './layout/structure/user-layout/user-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserLayoutComponent
+    redirectTo: 'resource',
+    pathMatch: 'full'
+  },
+  {
+    path: 'resource',
+    loadChildren: () => import('./layout/resource/resource.module').then(m => m.ResourceModule)
+  },
+  {
+    path: 'structure',
+    loadChildren: () => import('./layout/structure/structure.module').then(m => m.StructureModule)
   }
 ];
 

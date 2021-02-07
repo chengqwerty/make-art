@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log('This is user layout component.');
+  }
 
   ngOnInit(): void {
   }

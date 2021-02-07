@@ -1,0 +1,16 @@
+:host ::ng-deep .mat-tab-label  {
+  padding: 0 8px;
+  .mat-tab-label-content {
+    justify-content: space-between;
+    width: 100%;
+  }
+  &:hover .make-reuse-icon {
+    display: inline-block;
+  }
+}
+.make-reuse-icon {
+  display: none;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+}

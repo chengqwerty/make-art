@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from './layout/layout.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { ReuseTabStrategy } from './layout/structure/widget/reuse-tab/reuse-tab.strategy';
+import { RoutesModule } from './routes/routes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,10 +15,14 @@ import { LayoutModule } from './layout/layout.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
-    LayoutModule
+    RoutesModule
   ],
-  providers: [],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: ReuseTabStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
