@@ -24,6 +24,12 @@ export class ReuseTabService implements OnDestroy {
   // 路由复用数据变更通知
   // tslint:disable-next-line:variable-name
   private _cachedChange = new BehaviorSubject<ReuseTabNotify | null>(null);
+  /**
+   * 在删除一个tab标签时要触发路由变动，此时会触发路由复用store操作，那么刚刚删除的tab标签会重新add.
+   * removeUrlBuffer负责记录这个删除的tab标签的url，在下次添加前不在把它add进cache中。
+   * @private
+   */
+  private removeUrlBuffer: string | null;
   // tslint:disable-next-line:variable-name
   private _max = 10;
   // tslint:disable-next-line:variable-name
@@ -34,7 +40,7 @@ export class ReuseTabService implements OnDestroy {
   // tslint:disable-next-line:variable-name
   private _titleCached: { [url: string]: ReuseTitle } = {};
   private positionBuffer: { [url: string]: [number, number] } = {};
-  private removeUrlBuffer: string | null;
+
   private debug = false;
   /** 排除规则，限 `mode=URL` */
   private excludes: RegExp[] = [];
@@ -289,10 +295,12 @@ export class ReuseTabService implements OnDestroy {
   }
 
   close(url: string, includeNonCloseable: boolean): boolean {
+    this.removeUrlBuffer = url;
     this.remove(url, includeNonCloseable);
     this._cachedChange.next({ active: 'close', url, list: this._cached });
     return true;
   }
+
   // 路由复用钩子
   // runHook(method: ReuseHookTypes, comp: ReuseComponentRef | number, type: ReuseHookOnReuseInitType = 'init'): void {
   //   if (typeof comp === 'number') {

@@ -35,7 +35,6 @@ export class ReuseTabStrategy implements RouteReuseStrategy {
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {
     this.reuseTabService.store(route, handle);
-    console.log('I am OK');
   }
 
 }

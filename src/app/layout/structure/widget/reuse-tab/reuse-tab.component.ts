@@ -132,4 +132,21 @@ export class ReuseTabComponent implements OnInit {
     this.router.navigate([a.url]);
   }
 
+  /**
+   * 关闭某个标签，并防止事件冒泡
+   * @param event click事件，防止冒泡
+   * @param index 关闭的标签index
+   * @param includeNonCloseable 是否强制关闭
+   */
+  close(event: Event, index: number, includeNonCloseable: boolean = false): boolean {
+    if (event !== null) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const item = this.list[index];
+    this.reuseTabService.close(item.url, includeNonCloseable);
+    this.cdr.detectChanges();
+    return false;
+  }
+
 }
